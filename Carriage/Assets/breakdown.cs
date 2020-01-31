@@ -14,7 +14,7 @@ public class breakdown : MonoBehaviour
     {
         // Selects item required (Is Random)
 
-        possibleItemsRequired = SearchItemLoaded();
+        //possibleItemsRequired = SearchItemLoaded();
 
         //currentItemRequired = possibleItemsRequired[0];
     }
@@ -42,6 +42,7 @@ public class breakdown : MonoBehaviour
         GameObject[] possibleItems = GameObject.FindGameObjectsWithTag("Item");
         foreach (GameObject item in possibleItems)
         {
+            print(item.GetComponent<itemInfo>().ID);
             returnItems.Add(item.GetComponent<itemInfo>().ID);
         }
 
@@ -50,6 +51,8 @@ public class breakdown : MonoBehaviour
 
     private void selectNewItem()
     {
+        possibleItemsRequired = SearchItemLoaded();
+
         currentItemRequired = possibleItemsRequired[Random.Range(0, possibleItemsRequired.Count)];
     }
 
