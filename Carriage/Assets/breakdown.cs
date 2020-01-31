@@ -68,5 +68,17 @@ public class breakdown : MonoBehaviour
                 health = 200f;
             }
         }
+
+        if (itemToCheck.CompareTag("Player"))
+        {
+            if (!itemToCheck.GetComponent<playerMovementScript>().followPlayer)
+            {
+                if (currentItemRequired == itemToCheck.GetComponent<playerMovementScript>().itemHeld.GetComponent<itemInfo>().ID)
+                {
+                    Destroy(itemToCheck.GetComponent<playerMovementScript>().itemHeld);
+                    health = 200f;
+                }
+            }
+        }
     }
 }

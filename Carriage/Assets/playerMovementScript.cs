@@ -9,6 +9,8 @@ public class playerMovementScript : MonoBehaviour
 
     public GameObject itemHeld;
 
+    public bool followPlayer;
+
 
     //Movement variables
     public float playerSpeed;
@@ -27,52 +29,56 @@ public class playerMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (itemHeld)
+        if (itemHeld && followPlayer)
         {
             itemHeld.transform.position = player.transform.position + new Vector3(Input.GetAxis("Horizontal") * 2, 0, Input.GetAxis("Vertical") * 2);
         }
+        else if (itemHeld && !followPlayer)
+        {
+            itemHeld.transform.position = player.transform.position + new Vector3(0, 2, 0);
+        }
 
-        player.transform.position += new Vector3(Input.GetAxis("Horizontal") * playerSpeed, 0, -Input.GetAxis("Vertical") * playerSpeed) * Time.deltaTime;
+        //player.transform.position += new Vector3(Input.GetAxis("Horizontal") * playerSpeed, 0, -Input.GetAxis("Vertical") * playerSpeed) * Time.deltaTime;
 
         ////Movement
         ///Up
-        //if (Input.GetKey(KeyCode.W))
-        //{
+        if (Input.GetKey(KeyCode.W))
+        {
 
-        //    //Moves player up on Z axis
-        //    player.transform.position += new Vector3(0, 0, playerSpeed * Time.deltaTime);
+            //Moves player up on Z axis
+            player.transform.position += new Vector3(0, 0, playerSpeed * Time.deltaTime);
 
-        //}
-
-
-        /////Down
-        //else if (Input.GetKey(KeyCode.S))
-        //{
-
-        //    //Moves player down on Z axis
-        //    player.transform.position += new Vector3(0, 0, -playerSpeed * Time.deltaTime);
-
-        //}
+        }
 
 
-        /////Left
-        //if (Input.GetKey(KeyCode.A))
-        //{
+        ///Down
+        else if (Input.GetKey(KeyCode.S))
+        {
 
-        //    //Moves player down on X axis
-        //    player.transform.position += new Vector3(-playerSpeed * Time.deltaTime, 0, 0);
+            //Moves player down on Z axis
+            player.transform.position += new Vector3(0, 0, -playerSpeed * Time.deltaTime);
 
-        //}
+        }
 
 
-        /////Right
-        //else if (Input.GetKey(KeyCode.D))
-        //{
+        ///Left
+        if (Input.GetKey(KeyCode.A))
+        {
 
-        //    //Moves player up on X axis
-        //    player.transform.position += new Vector3(playerSpeed * Time.deltaTime, 0, 0);
+            //Moves player down on X axis
+            player.transform.position += new Vector3(-playerSpeed * Time.deltaTime, 0, 0);
 
-        //}
+        }
+
+
+        ///Right
+        else if (Input.GetKey(KeyCode.D))
+        {
+
+            //Moves player up on X axis
+            player.transform.position += new Vector3(playerSpeed * Time.deltaTime, 0, 0);
+
+        }
 
 
 

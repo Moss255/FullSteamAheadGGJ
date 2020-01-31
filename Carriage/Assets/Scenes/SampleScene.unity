@@ -686,6 +686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1157566635}
   itemHeld: {fileID: 0}
+  followPlayer: 1
   playerSpeed: 7
 --- !u!136 &1157566637
 CapsuleCollider:
