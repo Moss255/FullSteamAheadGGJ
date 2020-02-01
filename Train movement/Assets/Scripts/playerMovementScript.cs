@@ -15,6 +15,8 @@ public class playerMovementScript : MonoBehaviour
 
     public bool followPlayer;
 
+    public Vector3 itemDirection;
+
 
 
     //Movement variables
@@ -40,7 +42,9 @@ public class playerMovementScript : MonoBehaviour
         {
             //player.transform.Rotate(new Vector3(0, 45, 0));
 
-            itemHeld.transform.position = player.transform.position + new Vector3(Input.GetAxis("Horizontal") * 2, 0, Input.GetAxis("Vertical") * 2);
+            itemDirection = new Vector3(Input.GetAxis("Horizontal") * 2, 0, Input.GetAxis("Vertical") * 2);
+
+            itemHeld.transform.position = player.transform.position + itemDirection;
 
             
         }
@@ -128,6 +132,7 @@ public class playerMovementScript : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                itemHeld.GetComponent<Rigidbody>().AddForce(itemDirection);
                 itemHeld = null;
             }
 
