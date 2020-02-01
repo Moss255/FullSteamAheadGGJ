@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/beachLevel.unity
+    guid: 7cc314213c277b94393280a29aa6fdd6
   m_configObjects: {}

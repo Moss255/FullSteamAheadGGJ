@@ -42,9 +42,9 @@ public class playerMovementScript : MonoBehaviour
             itemHeld.transform.position = player.transform.position + new Vector3(Input.GetAxis("Horizontal") * 2, 0, Input.GetAxis("Vertical") * 2);
 
            if (Input.GetMouseButtonDown(0))
-            {
+           {
                 itemHeld = null;
-            }
+           }
         }
         else if (itemHeld && !followPlayer)
         {
@@ -124,7 +124,6 @@ public class playerMovementScript : MonoBehaviour
             {
                 other.gameObject.GetComponent<itemInfo>().isCollected = true;
                 itemHeld = other.gameObject;
-
 
             }
         }
