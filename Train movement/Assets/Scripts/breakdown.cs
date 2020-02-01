@@ -203,15 +203,11 @@ public class breakdown : MonoBehaviour
             }
         }
 
-        print("1");
+       
         ///Player collides with carriage while player is holding item
         if (collision.gameObject.tag == "Player")
         {
-            //if (!itemToCheck.GetComponent<playerMovementScript>().followPlayer)
-            //{
-
-            //}
-            //print("2");
+           
 
             print(collision.gameObject.GetComponent<playerMovementScript>().itemHeld.GetComponent<itemInfo>().ID);
 
@@ -219,7 +215,7 @@ public class breakdown : MonoBehaviour
 
             if (currentItemRequired == collision.gameObject.GetComponent<playerMovementScript>().itemHeld.GetComponent<itemInfo>().ID)
             {
-                print("3");
+                
 
                 Destroy(itemToCheck.GetComponent<playerMovementScript>().itemHeld);
                 health = maxHealth;

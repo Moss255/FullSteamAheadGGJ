@@ -14,6 +14,8 @@ public class levelEndScript : MonoBehaviour
 
 
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,11 +41,39 @@ public class levelEndScript : MonoBehaviour
             //Win
             if (trainPlayerDetector.GetComponent<trainRideScript>().ridingTrain == true)
             {
-                //Test
-                print("Win");
 
-                //Load next scene
-                train.GetComponent<trainManagement>().addNewCarriage();
+
+                //Checks carriages
+                foreach(Transform child in train.transform)
+                {
+                    //Checks for breakdown script in child object
+                    if(child.GetComponent<breakdown>() != null)
+                    {
+                        //Checks for broken carriage
+                        if(child.GetComponent<breakdown>().health < child.GetComponent<breakdown>().maxHealth/4)
+                        {
+
+                            print("Loss");
+
+                        }
+
+                        //Adds new carriage/ends game
+                        else
+                        {
+
+                            print("Win");
+
+                            //train.GetComponent<trainManagement>().addNewCarriage();
+
+                        }
+
+                    }
+
+                }
+
+                
+
+                
 
             }
 

@@ -46,7 +46,7 @@ public class trainRideScript : MonoBehaviour
                 ridingTrain = true;
 
                 //Changes player position
-                player.transform.position = train.transform.position + new Vector3(0, 1, 0);
+                player.transform.position = train.transform.position + new Vector3(0, 1, 1.5f);
 
                 //Makes player child of train
                 player.transform.parent = train.transform;
