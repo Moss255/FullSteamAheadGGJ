@@ -19,6 +19,15 @@ public class breakdown : MonoBehaviour
 
     public Colour carriageColour;
 
+
+    
+
+    //UI variables
+    public SpriteRenderer carriageCall1;
+
+    //Image lists
+    public List<Sprite> beachImageList;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,10 +50,39 @@ public class breakdown : MonoBehaviour
         }
 
 
-        ///Choose item
-        if (health <= 0 && currentItemRequired == 0)
+        //Debug
+        if (Input.GetKeyDown(KeyCode.O))
         {
+
             selectNewItem();
+
+        }
+
+
+        ////UI
+        ///Sets UI to show current item above carriage
+        //Beach ball
+        if(currentItemRequired == possibleItemsRequired[0])
+        {
+
+            carriageCall1.sprite = beachImageList[0];
+
+        }
+
+        //Bucket
+        else if (currentItemRequired == possibleItemsRequired[1])
+        {
+
+            carriageCall1.sprite = beachImageList[1];
+
+        }
+
+        //Sunglasses
+        else if (currentItemRequired == possibleItemsRequired[2])
+        {
+
+            carriageCall1.sprite = beachImageList[2];
+
         }
     }
 
@@ -69,7 +107,7 @@ public class breakdown : MonoBehaviour
     ///Chooses a new item
     private void selectNewItem()
     {
-        possibleItemsRequired = SearchItemLoaded();
+        
 
         currentItemRequired = possibleItemsRequired[Random.Range(0, possibleItemsRequired.Count)];
     }
@@ -89,6 +127,9 @@ public class breakdown : MonoBehaviour
             {
                 Destroy(itemToCheck);
                 health = 200f;
+
+                //Chooses new item
+                selectNewItem();
             }
         }
 
@@ -101,6 +142,9 @@ public class breakdown : MonoBehaviour
                 {
                     Destroy(itemToCheck.GetComponent<playerMovementScript>().itemHeld);
                     health = 200f;
+
+                    //Chooses new item
+                    selectNewItem();
                 }
             }
         }
