@@ -31,6 +31,7 @@ public class breakdown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        selectNewItem();
 
         // Selects item required (Is Random)
 

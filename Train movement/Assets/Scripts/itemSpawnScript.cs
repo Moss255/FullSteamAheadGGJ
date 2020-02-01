@@ -20,6 +20,9 @@ public class itemSpawnScript : MonoBehaviour
     //Item names
     public List<string> beachItems;
 
+    //Item meshes
+    public List<Mesh> beachMeshes;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +45,13 @@ public class itemSpawnScript : MonoBehaviour
             //Spawns item
             var spawnedItem = Instantiate(itemTemplate, new Vector3(trainTransform.position.x + Random.Range(4f, 15f), 1.5f, trainTransform.position.z + Random.Range(-5f, 5f)), transform.rotation);
 
-            spawnedItem.name = beachItems[Random.Range(0, beachItems.Count)];
+            var itemInfo = Random.Range(0, beachItems.Count);
+
+            //Changes item name
+            spawnedItem.name = beachItems[itemInfo];
+
+            //Changes item mesh
+            spawnedItem.GetComponent<MeshFilter>().mesh = beachMeshes[itemInfo]; 
 
             //Reset timer
             itemSpawnTimer = 0;

@@ -17,20 +17,20 @@ public class levelEndScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
     //Train enters the end of level trigger box
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject == train)
+        if (other.gameObject == train)
         {
 
 
@@ -43,7 +43,7 @@ public class levelEndScript : MonoBehaviour
                 print("Win");
 
                 //Load next scene
-                SceneManager.LoadScene("beachLevel");
+                train.GetComponent<trainManagement>().addNewCarriage();
 
             }
 
@@ -54,7 +54,9 @@ public class levelEndScript : MonoBehaviour
                 print("Loss");
 
                 //ReloadScene
-                SceneManager.LoadScene("beachLevel");
+                //train.GetComponent<trainManagement>().addNewCarriage();
+
+                //SceneManager.LoadScene("beachLevel");
 
             }
 
