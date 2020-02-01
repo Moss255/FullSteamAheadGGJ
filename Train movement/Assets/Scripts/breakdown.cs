@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum Colour
+{
+    red,
+    blue,
+    green,
+    purple
+}
 public class breakdown : MonoBehaviour
 {
     public float health;
@@ -9,9 +17,12 @@ public class breakdown : MonoBehaviour
     public List<int> possibleItemsRequired;
     public float degradeSpeed;
 
+    public Colour carriageColour;
+
     // Start is called before the first frame update
     void Start()
     {
+
         // Selects item required (Is Random)
 
         //possibleItemsRequired = SearchItemLoaded();
