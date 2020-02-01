@@ -18,6 +18,9 @@ public class itemInfo : MonoBehaviour
             case "Wood":
                 ID = 1;
                 break;
+            case "Car":
+                ID = 2;
+                break;
         }
     }
 
