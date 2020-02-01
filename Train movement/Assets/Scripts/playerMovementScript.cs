@@ -40,11 +40,20 @@ public class playerMovementScript : MonoBehaviour
             //player.transform.Rotate(new Vector3(0, 45, 0));
 
             itemHeld.transform.position = player.transform.position + new Vector3(Input.GetAxis("Horizontal") * 2, 0, Input.GetAxis("Vertical") * 2);
+
+           if (Input.GetMouseButtonDown(0))
+            {
+                itemHeld = null;
+            }
         }
         else if (itemHeld && !followPlayer)
         {
             itemHeld.transform.position = player.transform.position + new Vector3(0, 2, 0);
         }
+
+        
+
+  
 
 
 
@@ -102,11 +111,24 @@ public class playerMovementScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Item"))
+
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Item") && !itemHeld)
         {
-            collision.collider.GetComponent<itemInfo>().isCollected = true;
-            itemHeld = collision.collider.gameObject;
+            print("You can pick this object up");
+
+            if (Input.GetMouseButtonDown(0) && !itemHeld)
+            {
+                other.gameObject.GetComponent<itemInfo>().isCollected = true;
+                itemHeld = other.gameObject;
+
+
+            }
         }
+
     }
 
 
