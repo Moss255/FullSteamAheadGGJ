@@ -16,6 +16,7 @@ public class playerMovementScript : MonoBehaviour
     public bool followPlayer;
 
 
+
     //Movement variables
     public float playerSpeed;
 
@@ -28,7 +29,7 @@ public class playerMovementScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -41,19 +42,19 @@ public class playerMovementScript : MonoBehaviour
 
             itemHeld.transform.position = player.transform.position + new Vector3(Input.GetAxis("Horizontal") * 2, 0, Input.GetAxis("Vertical") * 2);
 
-           if (Input.GetMouseButtonDown(0))
-           {
-                itemHeld = null;
-           }
+            
         }
-        else if (itemHeld && !followPlayer)
+
+        if (itemHeld && Input.GetMouseButtonDown(0))
         {
-            itemHeld.transform.position = player.transform.position + new Vector3(0, 2, 0);
+            itemHeld = null;
         }
 
-        
 
-  
+
+
+
+
 
 
 
@@ -120,12 +121,12 @@ public class playerMovementScript : MonoBehaviour
         {
             print("You can pick this object up");
 
-            if (Input.GetMouseButtonDown(0) && !itemHeld)
+            if (Input.GetMouseButtonUp(0))
             {
                 other.gameObject.GetComponent<itemInfo>().isCollected = true;
                 itemHeld = other.gameObject;
-
             }
+                
         }
 
     }

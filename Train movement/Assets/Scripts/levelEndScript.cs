@@ -43,7 +43,7 @@ public class levelEndScript : MonoBehaviour
                 print("Win");
 
                 //Load next scene
-                SceneManager.LoadScene("beachLevel");
+                train.GetComponent<trainManagement>().addNewCarriage();
 
             }
 
@@ -54,7 +54,9 @@ public class levelEndScript : MonoBehaviour
                 print("Loss");
 
                 //ReloadScene
-                SceneManager.LoadScene("beachLevel");
+                train.GetComponent<trainManagement>().addNewCarriage();
+
+                //SceneManager.LoadScene("beachLevel");
 
             }
 
