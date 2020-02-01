@@ -10,6 +10,7 @@ public class trainManagement : MonoBehaviour
 
     public float carriageSpacing;
 
+
     // Start is called before the first frame update
     void Start()
     {

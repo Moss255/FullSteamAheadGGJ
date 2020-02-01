@@ -20,6 +20,12 @@ public class breakdown : MonoBehaviour
     public Colour carriageColour;
 
 
+    //Train variables
+    public GameObject train;
+
+    public float carriagePos;
+
+
     
 
     //UI variables
@@ -33,6 +39,11 @@ public class breakdown : MonoBehaviour
     {
         selectNewItem();
 
+
+        train = GameObject.Find("train");
+
+        carriagePos = train.GetComponent<trainManagement>().carriageSpacing * train.GetComponent<trainManagement>().carriageCount;
+
         // Selects item required (Is Random)
 
         //possibleItemsRequired = SearchItemLoaded();
@@ -42,6 +53,9 @@ public class breakdown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Carriage placement
+        gameObject.transform.position = train.transform.position + new Vector3(0, 0, carriagePos);
 
         ////Health
         ///Reduction
@@ -134,19 +148,29 @@ public class breakdown : MonoBehaviour
             }
         }
 
+        print("1");
         ///Player collides with carriage while player is holding item
-        if (itemToCheck.CompareTag("Player"))
+        if (collision.gameObject.tag == "Player")
         {
-            if (!itemToCheck.GetComponent<playerMovementScript>().followPlayer)
-            {
-                if (currentItemRequired == itemToCheck.GetComponent<playerMovementScript>().itemHeld.GetComponent<itemInfo>().ID)
-                {
-                    Destroy(itemToCheck.GetComponent<playerMovementScript>().itemHeld);
-                    health = 200f;
+            //if (!itemToCheck.GetComponent<playerMovementScript>().followPlayer)
+            //{
 
-                    //Chooses new item
-                    selectNewItem();
-                }
+            //}
+            //print("2");
+
+            print(collision.gameObject.GetComponent<playerMovementScript>().itemHeld.GetComponent<itemInfo>().ID);
+
+            print(currentItemRequired);
+
+            if (currentItemRequired == collision.gameObject.GetComponent<playerMovementScript>().itemHeld.GetComponent<itemInfo>().ID)
+            {
+                print("3");
+
+                Destroy(itemToCheck.GetComponent<playerMovementScript>().itemHeld);
+                health = 200f;
+
+                //Chooses new item
+                selectNewItem();
             }
         }
     }

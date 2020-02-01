@@ -19,29 +19,38 @@ public class itemInfo : MonoBehaviour
         ////ID setting for items
         switch (itemName)
         {
-            case "BeachBall":
+
+            case "Bucket":
                 ID = 0;
                 break;
 
-            case "BeachBallWrong":
+            case "BucketWrong":
                 ID = 1;
                 break;
 
-            case "Bucket":
-                ID = 2;
-                break;
+            //case "BeachBall":
+            //    ID = 0;
+            //    break;
 
-            case "BucketWrong":
-                ID = 3;
-                break;
+            //case "BeachBallWrong":
+            //    ID = 1;
+            //    break;
 
-            case "Sunglasses":
-                ID = 4;
-                break;
+            //case "Bucket":
+            //    ID = 2;
+            //    break;
 
-            case "SunglassesWrong":
-                ID = 5;
-                break;
+            //case "BucketWrong":
+            //    ID = 3;
+            //    break;
+
+            //case "Sunglasses":
+            //    ID = 4;
+            //    break;
+
+            //case "SunglassesWrong":
+            //    ID = 5;
+            //    break;
         }
     }
 

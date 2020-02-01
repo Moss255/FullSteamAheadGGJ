@@ -49,6 +49,7 @@ public class itemSpawnScript : MonoBehaviour
 
             //Changes item name
             spawnedItem.name = beachItems[itemInfo];
+            spawnedItem.GetComponent<itemInfo>().itemName = spawnedItem.name;
 
             //Changes item mesh
             spawnedItem.GetComponent<MeshRenderer>().material = beachMeshes[itemInfo]; 

@@ -38,21 +38,23 @@ public class playerMovementScript : MonoBehaviour
     void Update()
     {
 
-        if (itemHeld && followPlayer)
+        if (itemHeld)
         {
             //player.transform.Rotate(new Vector3(0, 45, 0));
 
-            itemDirection = new Vector3(Input.GetAxis("Horizontal") * 2, 0, Input.GetAxis("Vertical") * 2);
+            //itemDirection = new Vector3(Input.GetAxis("Horizontal") * 2, 0, Input.GetAxis("Vertical") * 2);
 
-            itemHeld.transform.position = player.transform.position + itemDirection;
+            //itemHeld.transform.position = player.transform.position + itemDirection;
 
+            itemHeld.transform.position = player.transform.position + new Vector3(0, 2, 0);
 
         }
 
 
 
 
-
+        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
 
 
@@ -119,6 +121,7 @@ public class playerMovementScript : MonoBehaviour
     {
         if (!itemHeld)
         {
+            
             if (other.gameObject.CompareTag("Item"))
             {
                 if (Input.GetMouseButtonDown(0))
@@ -132,7 +135,7 @@ public class playerMovementScript : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                itemHeld.GetComponent<Rigidbody>().AddForce(itemDirection);
+                //itemHeld.GetComponent<Rigidbody>().AddForce(itemDirection);
                 itemHeld = null;
             }
 

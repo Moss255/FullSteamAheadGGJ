@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  itemName: Wood
+  itemName: 
   isCollected: 0
 --- !u!54 &3880348582270456213
 Rigidbody:
