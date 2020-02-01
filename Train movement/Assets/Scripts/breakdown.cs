@@ -32,18 +32,24 @@ public class breakdown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        ////Health
+        ///Reduction
         if (health > 0)
         {
             health -= degradeSpeed;
         }
 
 
+        ///Choose item
         if (health <= 0 && currentItemRequired == 0)
         {
             selectNewItem();
         }
     }
 
+    
+    ////Classes and lists
     private List<int> SearchItemLoaded()
     {
 
@@ -60,6 +66,7 @@ public class breakdown : MonoBehaviour
         return returnItems;
     }
 
+    ///Chooses a new item
     private void selectNewItem()
     {
         possibleItemsRequired = SearchItemLoaded();
@@ -67,10 +74,15 @@ public class breakdown : MonoBehaviour
         currentItemRequired = possibleItemsRequired[Random.Range(0, possibleItemsRequired.Count)];
     }
 
+
+
+    ////Collisions
     public void OnCollisionEnter(Collision collision)
     {
         GameObject itemToCheck = collision.collider.gameObject;
-            
+        
+        ////Healing
+        ///Item collides with carriage
         if (itemToCheck.CompareTag("Item"))
         {
             if (currentItemRequired == itemToCheck.GetComponent<itemInfo>().ID)
@@ -80,6 +92,7 @@ public class breakdown : MonoBehaviour
             }
         }
 
+        ///Player collides with carriage while player is holding item
         if (itemToCheck.CompareTag("Player"))
         {
             if (!itemToCheck.GetComponent<playerMovementScript>().followPlayer)
