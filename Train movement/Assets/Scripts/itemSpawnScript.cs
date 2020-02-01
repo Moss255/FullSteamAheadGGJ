@@ -21,7 +21,7 @@ public class itemSpawnScript : MonoBehaviour
     public List<string> beachItems;
 
     //Item meshes
-    public List<Mesh> beachMeshes;
+    public List<Material> beachMeshes;
 
 
     // Start is called before the first frame update
@@ -51,7 +51,7 @@ public class itemSpawnScript : MonoBehaviour
             spawnedItem.name = beachItems[itemInfo];
 
             //Changes item mesh
-            spawnedItem.GetComponent<MeshFilter>().mesh = beachMeshes[itemInfo]; 
+            spawnedItem.GetComponent<MeshRenderer>().material = beachMeshes[itemInfo]; 
 
             //Reset timer
             itemSpawnTimer = 0;
