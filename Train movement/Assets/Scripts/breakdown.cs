@@ -12,7 +12,22 @@ public enum Colour
 }
 public class breakdown : MonoBehaviour
 {
+
+
+
+    //Health variables
     public float health;
+
+    public float maxHealth;
+
+    public List<Material> carriageHealthMaterials;
+
+    public GameObject carriageVisuals;
+
+    
+
+
+
     public int currentItemRequired;
     public List<int> possibleItemsRequired;
     public float degradeSpeed;
@@ -55,7 +70,7 @@ public class breakdown : MonoBehaviour
     {
 
         //Carriage placement
-        gameObject.transform.position = train.transform.position + new Vector3(0, 0, carriagePos);
+        gameObject.transform.position = train.transform.position + new Vector3(0, -1, carriagePos);
 
         ////Health
         ///Reduction
@@ -65,19 +80,59 @@ public class breakdown : MonoBehaviour
         }
 
 
-        //Debug
-        if (Input.GetKeyDown(KeyCode.O))
+        if(health >= maxHealth / 4)
         {
 
-            selectNewItem();
+            foreach(Transform child in carriageVisuals.transform)
+            {
+                if(child.GetComponent<MeshRenderer>() != null)
+                {
+
+                    child.GetComponent<MeshRenderer>().material = carriageHealthMaterials[0];
+
+                }
+
+
+            }
+
+            
 
         }
+
+        else if (health < maxHealth / 4)
+        {
+
+            foreach (Transform child in carriageVisuals.transform)
+            {
+                if (child.GetComponent<MeshRenderer>() != null)
+                {
+
+                    child.GetComponent<MeshRenderer>().material = carriageHealthMaterials[1];
+
+                }
+
+
+            }
+
+
+        }
+
+
+        ////Debug
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+
+        //    selectNewItem();
+
+        //}
+
+
 
 
         ////UI
         ///Sets UI to show current item above carriage
         //Beach ball
-        if(currentItemRequired == possibleItemsRequired[0])
+        if (currentItemRequired == possibleItemsRequired[0])
         {
 
             carriageCall1.sprite = beachImageList[0];
@@ -141,7 +196,7 @@ public class breakdown : MonoBehaviour
             if (currentItemRequired == itemToCheck.GetComponent<itemInfo>().ID)
             {
                 Destroy(itemToCheck);
-                health = 200f;
+                health = maxHealth;
 
                 //Chooses new item
                 selectNewItem();
@@ -167,7 +222,7 @@ public class breakdown : MonoBehaviour
                 print("3");
 
                 Destroy(itemToCheck.GetComponent<playerMovementScript>().itemHeld);
-                health = 200f;
+                health = maxHealth;
 
                 //Chooses new item
                 selectNewItem();

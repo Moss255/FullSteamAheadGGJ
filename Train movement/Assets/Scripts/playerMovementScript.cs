@@ -34,6 +34,7 @@ public class playerMovementScript : MonoBehaviour
 
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -60,6 +61,21 @@ public class playerMovementScript : MonoBehaviour
 
 
 
+        ////Resets player position
+        ///If outside of camera
+        var trainPos = train.transform.position;
+
+        var playerPos = player.transform.position;
+
+        
+        if (playerPos.z > trainPos.z + 15 || playerPos.z < trainPos.z - 10 || playerPos.x > trainPos.x + 17 || playerPos.x < trainPos.x - 2)
+        {
+
+            player.transform.position = train.transform.position + new Vector3(5, -0.55f, -1);
+
+        }
+
+
         ////Movement
 
         ///When player isn't riding on the train
@@ -73,6 +89,8 @@ public class playerMovementScript : MonoBehaviour
                 //Moves player up on Z axis
                 player.transform.position += new Vector3(-playerSpeed * Time.deltaTime, 0, playerSpeed * Time.deltaTime);
 
+                player.transform.LookAt(new Vector3(player.transform.position.x - playerSpeed, 2, player.transform.position.z + playerSpeed));
+
             }
 
 
@@ -82,6 +100,8 @@ public class playerMovementScript : MonoBehaviour
 
                 //Moves player down on Z axis
                 player.transform.position += new Vector3(playerSpeed * Time.deltaTime, 0, -playerSpeed * Time.deltaTime);
+
+                player.transform.LookAt(new Vector3(player.transform.position.x + playerSpeed, 2, player.transform.position.z  - playerSpeed));
 
             }
 
@@ -93,6 +113,8 @@ public class playerMovementScript : MonoBehaviour
                 //Moves player down on X axis
                 player.transform.position += new Vector3(-playerSpeed * Time.deltaTime, 0, -playerSpeed * Time.deltaTime);
 
+                player.transform.LookAt(new Vector3(player.transform.position.x - playerSpeed, 2, player.transform.position.z - playerSpeed));
+
             }
 
 
@@ -102,6 +124,8 @@ public class playerMovementScript : MonoBehaviour
 
                 //Moves player up on X axis
                 player.transform.position += new Vector3(playerSpeed * Time.deltaTime, 0, playerSpeed * Time.deltaTime);
+
+                player.transform.LookAt(new Vector3(player.transform.position.x + playerSpeed, 2, player.transform.position.z + playerSpeed));
 
             }
 

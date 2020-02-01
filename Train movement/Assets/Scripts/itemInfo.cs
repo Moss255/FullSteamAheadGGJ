@@ -28,13 +28,13 @@ public class itemInfo : MonoBehaviour
                 ID = 1;
                 break;
 
-            //case "BeachBall":
-            //    ID = 0;
-            //    break;
+            case "BeachBall":
+               ID = 2;
+               break;
 
-            //case "BeachBallWrong":
-            //    ID = 1;
-            //    break;
+            case "BeachBallWrong":
+                ID = 3;
+                break;
 
             //case "Bucket":
             //    ID = 2;
