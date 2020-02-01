@@ -45,10 +45,6 @@ public class playerMovementScript : MonoBehaviour
             
         }
 
-        if (itemHeld && Input.GetMouseButtonDown(0))
-        {
-            itemHeld = null;
-        }
 
 
 
@@ -117,18 +113,26 @@ public class playerMovementScript : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Item") && !itemHeld)
+        if (!itemHeld)
         {
-            print("You can pick this object up");
-
-            if (Input.GetMouseButtonUp(0))
+            if (other.gameObject.CompareTag("Item"))
             {
-                other.gameObject.GetComponent<itemInfo>().isCollected = true;
-                itemHeld = other.gameObject;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    other.gameObject.GetComponent<itemInfo>().isCollected = true;
+                    itemHeld = other.gameObject;
+                }
             }
-                
         }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                itemHeld = null;
+            }
 
+
+        }
     }
 
 
